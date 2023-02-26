@@ -12,7 +12,7 @@ pip3 install brownie
 brownie test --network arbitrum-main-fork
 ```
 
-If you do not have this network and the following lines to the end of your `~.brownie/netowrk_config-yaml`
+If you do not have this network and the following lines to the end of your `~/.brownie/netowrk_config-yaml`
 ```yaml
   - name: Ganache-CLI (Arbitrum-Mainnet Fork)
     id: arbitrum-main-fork
