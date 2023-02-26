@@ -7,7 +7,8 @@ The tests are based on LDO on Arbitrum where a multisig is curerntly doing these
 
 to run tests
 
-```
+```bash
+pip3 install brownie
 brownie test --network arbitrum-main-fork
 ```
 
