@@ -34,8 +34,23 @@ your .env file will require:
 WEB3_INFURA_PROJECT_ID=
 or other arbitrum RPC
 ```
-LDO tokens are sent into the contract and are meant to be stored there.
 
-A list is setup with gauges, amounts, and numbers of epochs.
+To deploy use the deploy script.  
 
-The ChildChainStreamer has its own sense of epochs, this contract waits until the stream says it is ready, and then asks chainlink to trigger it and send in the alotted number of tokens.
+## Once this is deployed
+- Sufficient tokens for at least 1 epoch must be sent into the contract and are meant to be stored there.
+  - The admin is able to sweep tokens
+- The job will only run ever minWaitSeconds and when there is no active epoch
+
+## Further setup
+
+### Setting a watchlist
+The admin must setup a watch list.
+
+ `setRecipientList([streamer.address], [weekly_incentive_gwei_in_configured_token], [maximum_payout_periods])`
+ 
+To specify 1 gauge, use the address, the amount, and the number of periods.  For multiple gauges, setup the lists so the same list index provides matching data for all fields.
+
+### Funding the contract
+Send at least enough tokens into the contract to pay out one period.  In order to run the full schedule up to max_payout_periods, send max_payout_periods*weekly_incentive to the contract.
+
