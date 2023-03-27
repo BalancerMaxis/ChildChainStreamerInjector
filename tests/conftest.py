@@ -82,7 +82,7 @@ def deploy(deployer, admin, upkeep_caller, authorizer_adaptor, streamer, gauge, 
     Deploys, vault and test strategy, mock token and wires them up.
     """
 
-    token.transfer(admin, 1000*10**18, {"from": ARBI_LDO_WHALE})
+    token.transfer(admin, 10000*10**18, {"from": ARBI_LDO_WHALE})
 
     injector = periodicRewardsInjector.deploy(
         upkeep_caller,
@@ -92,7 +92,6 @@ def deploy(deployer, admin, upkeep_caller, authorizer_adaptor, streamer, gauge, 
     )
     print(token.balanceOf(deployer))
     injector.transferOwnership(admin, {"from": deployer})
-    token.transfer(injector.address, 500*10**18, {"from": admin})
     injector.acceptOwnership({"from": admin})
 
     return DotMap(
