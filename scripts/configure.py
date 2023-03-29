@@ -199,7 +199,7 @@ def register_upkeep(upkeep_contract,
     payload["transactions"][0]["to"] = link_address
     payload["transactions"][0]["contractInputsValues"]["_to"] = registrar.address
     payload["transactions"][0]["contractInputsValues"]["_value"] = link_deposit_gwei
-    payload["transactions"][0]["contractInputsValues"]["data"] = calldata
+    payload["transactions"][0]["contractInputsValues"]["_data"] = calldata
     return json.dumps(payload)
 
 
@@ -210,7 +210,7 @@ def set_recipient_list(streamer_addresses, amounts_per_period, max_periods, inje
     payload["transactions"][0]["to"] = injector_address
     payload["transactions"][0]["contractInputsValues"]["streamerAddresses"] = streamer_addresses
     payload["transactions"][0]["contractInputsValues"]["amountsPerPeriod"] = amounts_per_period
-    payload["transactions"][0]["contractInputsValues"]["data"] = max_periods
+    payload["transactions"][0]["contractInputsValues"]["maxPeriods"] = max_periods
     ### Send coins
     total=0
     for i in range(0, len(amounts_per_period), 1):
