@@ -224,4 +224,12 @@ def check_funky_upkeep_data(streamer, injector, upkeep_caller, token, weekly_inc
     assert(False)
 
 
+def test_sweep(admin, injector, token):
+    system_balance = token.balanceOf(admin) + token.balanceOf(injector)
+    token.transfer(injector, 1000*10**18*2, {"from": admin})
+    injector.sweep(token, admin)
+    assert token.balanceOf(admin) == 0
+    assert token.balanceOf(admin) + token.balanceOf(injector) == system_balance
+
+
 
