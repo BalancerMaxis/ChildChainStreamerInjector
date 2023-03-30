@@ -31,7 +31,7 @@ On a mac with homebrew from the root of this repo:
 brew install python@3.9
 python3.9 -m venv venv
 source venv/bin/activate
-pip3 install brownie==1.19.0
+pip3 install eth-brownie==1.19.0
 brownie --version
 ```
 
