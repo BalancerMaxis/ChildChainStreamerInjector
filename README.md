@@ -62,7 +62,7 @@ This should deploy the contract and return the deployed address.  Write it down/
 
 ### Configuring an Injector
 [scripts/configre.py](scripts/configure.py) is a set of simple tools that can help you build gnosis transaction builder jsons to do the following 3 things from a multisig safe:
-1. Accept Ownership of a safe
+1. Accept Ownership of injector from a safe
 2. Set a recipient list on the injector
 3. Register the injector with chainlink
 
