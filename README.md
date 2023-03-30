@@ -55,7 +55,7 @@ Deployment is done using the deploy script found in [scripts/deploy.py](scripts/
 
 Once everthing looks good run `brownie run --network <network name> scripts/deploy.py`. 
 
-The list of all available network names can be found by running `brownie network list`.
+The list of all available network names can be found by running `brownie networks list`.
 In general you will want to use one of `[arbitrum-main, polygon-main, optimism-main]`
 
 This should deploy the contract and return the deployed address.  Write it down/check it on etherscan and make sure it is there and verified.  You can play with it.  At this point the deployer is still owner as the multisig has not accepted ownership.
