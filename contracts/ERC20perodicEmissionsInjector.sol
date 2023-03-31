@@ -266,7 +266,12 @@ contract periodicRewardsInjector is ConfirmedOwner, Pausable, KeeperCompatibleIn
     function setInjectTokenAddress(address ERC20token) public onlyOwner {
         s_injectTokenAddress = ERC20token;
     }
-
+    /**
+     * @notice Gets the token this injector is operating on
+   */
+    function setInjectTokenAddress(address ERC20token) public onlyOwner {
+        return s_injectTokenAddress;
+    }
     /**
      * @notice Gets configuration information for an address on the streamerlist
    */
