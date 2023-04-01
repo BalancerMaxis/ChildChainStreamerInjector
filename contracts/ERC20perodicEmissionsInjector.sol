@@ -271,7 +271,7 @@ contract periodicRewardsInjector is ConfirmedOwner, Pausable, KeeperCompatibleIn
     /**
      * @notice Gets the token this injector is operating on
    */
-    function getInjectTokenAddress(address ERC20token) public onlyOwner {
+    function getInjectTokenAddress() external view returns (address ERC20token){
         return s_injectTokenAddress;
     }
     /**
