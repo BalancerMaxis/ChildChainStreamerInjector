@@ -224,12 +224,15 @@ def check_funky_upkeep_data(streamer, injector, upkeep_caller, token, weekly_inc
     assert(False)
 
 
-def test_sweep(admin, injector, token):
+def test_sweep(admin, injector, token, deployer):
     system_balance = token.balanceOf(admin) + token.balanceOf(injector)
-    token.transfer(injector, 1000*10**18*2, {"from": admin})
-    injector.sweep(token, admin)
+    admin_balance = token.balanceOf(admin)
+    assert token.balanceOf(admin) > 0
+    token.transfer(injector, token.balanceOf(admin), {"from": admin})
     assert token.balanceOf(admin) == 0
+    injector.sweep(token, admin, {"from": admin})
+    assert token.balanceOf(admin) >= admin_balance
     assert token.balanceOf(admin) + token.balanceOf(injector) == system_balance
-
-
+    with brownie.reverts("Only callable by owner"):
+        injector.sweep(deployer, injector, {"from": deployer})
 

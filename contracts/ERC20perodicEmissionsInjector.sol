@@ -25,6 +25,7 @@ contract periodicRewardsInjector is ConfirmedOwner, Pausable, KeeperCompatibleIn
     event injectionFailed(address gauge);
     event emissionsInjection(address gauge, uint256 amount);
     event forwardedCall(address targetContract);
+    event setHandlingToken(address token);
 
     // events below here are debugging and should be removed
     event wrongCaller(address sender, address registry);
@@ -264,9 +265,15 @@ contract periodicRewardsInjector is ConfirmedOwner, Pausable, KeeperCompatibleIn
      * @notice Sets the address of the ERC20 token this contract should handle
    */
     function setInjectTokenAddress(address ERC20token) public onlyOwner {
+        emit setHandlingToken(ERC20token);
         s_injectTokenAddress = ERC20token;
     }
-
+    /**
+     * @notice Gets the token this injector is operating on
+   */
+    function getInjectTokenAddress() external view returns (address ERC20token){
+        return s_injectTokenAddress;
+    }
     /**
      * @notice Gets configuration information for an address on the streamerlist
    */
